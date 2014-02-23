@@ -1,0 +1,225 @@
+// Created: @karstenrowe 18-02-2014
+// Project: @karstenrowe wordpress framework
+
+// import bootstrap styles
+@import "bootstrap/css/bootstrap.min.css";
+@import "bootstrap/css/bootstrap-responsive.min.css";
+
+// typography
+@headline-font: 'adelle', serif;
+@body-font: 'freight-sans-pro', sans-serif;
+@big: 20px;
+@normal: 17px;
+@small: 15px;
+@tiny: 13px;
+
+// color
+@brand-dk: #DB3A1B;
+@brand: #E85C41; // Red orange
+@brand-lt: #EE836E;
+@brand-bg: #fce6e2;
+
+@green-dk: #449A88;
+@green: #72C1B0;
+@green-lt: #C5E5DE;
+
+@blue-dk: #2C9AB7;
+@blue: #52BAD5;
+@blue-lt: #B1E0EC;
+
+@grey-dk: #373737;
+@grey: #5D5C5D;
+@grey-lt: #B7B7B7;
+
+@off-white: #F2F2F2; // base color
+@white: #ffffff;
+
+// selection
+::-moz-selection {
+  text-shadow: none;
+	color: @brand-dk;
+  background: @brand-bg;
+}
+::selection {
+  text-shadow: none;
+	color: @brand-dk;
+  background: @brand-bg;
+}
+
+// retina mixin
+@highdpi: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+
+.2x(@path, @position, @w: auto, @h: auto) {
+	background-image: url(@path);
+	background-repeat: ~"@{position}";
+	@at2x_path: ~`"@{path}".split('.').slice(0, "@{path}".split('.').length - 1).join(".") + "_2x" + "." + "@{path}".split('.')["@{path}".split('.').length - 1]`;
+
+	@media @highdpi {
+		background-image: url(@at2x_path);
+		background-repeat: ~"@{position}";
+		background-size: @w @h;
+	}
+}
+// clearfix
+.clearfix() {
+	zoom: 1;
+	&:before,
+	&:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+	&:after { clear: both; }
+}
+
+// framework
+body {
+	font-family: @body-font;
+	font-size: @normal;
+	font-weight: 400;
+	line-height: 23px;
+	color: @grey;
+	background-color: @off-white;
+	margin-top: 60px; // allows for height of fixed header
+	.container {
+		min-height: 400px;
+	}
+}
+
+// common elements
+h1,
+h2 {
+	font-family: @headline-font;
+	line-height: 40px;
+}
+h3 {
+	font-family: @headline-font;
+	line-height: 30px;
+}
+h4,
+h5,
+h6 {
+	font-family: @body-font;
+	font-weight: 700;
+}
+
+// links
+body {
+	a {
+		text-decoration: none;
+		color: @brand;
+		&:focus,
+		&:hover {
+			text-decoration: underline;
+			color: @brand-dk;
+		}
+		&:active {
+			color: @brand;
+			background: @brand-lt;
+		}
+	}
+	// remove webkit blue glow on focus
+	a:focus,
+	button,
+	input:focus,
+	textarea:focus {
+	  outline: none;
+	}
+}
+
+// navigation: primary
+.navbar {
+	.navbar-inner {
+		min-height: 40px;
+		padding: 0;
+	}
+	.container {
+		min-height: 0;
+	}
+	.brand {
+		display: none; // hide site title/brand for now, customise on a per project basis
+	}
+	&.navbar-inverse .navbar-inner {
+		background: @white;
+		background: rgba(255,255,255, 0.94);
+		box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+		border-color: @grey-lt;
+	}
+	// ul
+	.nav {
+		margin-bottom: -1px; // hack to hide the double border
+		// li
+		.page_item {
+			a {
+				font-weight: 700;
+				text-shadow: 0 1px 1px white;
+				color: @grey;
+				&:hover {
+					color: @brand;
+					border-bottom: 1px solid @brand;
+				}
+			}
+			&.current_page_item {
+				a {
+					color: @brand;
+					border-bottom: 1px solid @brand;
+				}
+			}
+		}
+	}
+	// fixed nav
+	&.navbar-fixed-top {
+		position: fixed;
+		margin-bottom: 0 !important;
+	}
+}
+
+// hero
+.hero-unit {
+	background: @off-white;
+	padding: 20px 0;
+
+	h1 {
+		color: @grey-dk;
+		letter-spacing: 0;
+		margin: 12px 0;
+		span {
+			color: @brand-dk;
+		}
+	}
+	p {
+		background: @brand-bg;
+		display: inline-block;
+		padding: 0 2px;
+	}
+}
+
+// row
+.row {
+	h1 {
+		color: @brand-dk;
+		border-bottom: 1px solid @grey-lt;
+		margin: 0 0 20px 0;
+		padding: 0 0 12px 0;
+	}
+	h2 {
+		font-size: 24px;
+		line-height: 32px;
+		color: @grey-dk;
+		margin: 18px 0 8px 0;
+	}
+}
+
+// widget
+.widget {
+	font-size: @small;
+	line-height: 20px;
+	h3 {
+		font-size: 20px;
+		font-family: @body-font;
+		line-height: 30px;
+		color: @grey-dk;
+		margin: 11px 0 8px 0;
+	}
+}
+// footer
+footer.container {
+	min-height: 0;
+	margin: 30px auto;
+}
