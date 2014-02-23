@@ -2,6 +2,9 @@
     <meta charset="utf-8">
     <title>WordPress Framework</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="karstenrowe bootstrap wordpress framework">
+    <meta name="author" content="karstenrowe">
+    <link rel="shortcut icon" href="ico/favicon.png">
 
 		<!-- Typekit fonts import -->
 		<script type="text/javascript" src="//use.typekit.net/qpb8voj.js"></script>
