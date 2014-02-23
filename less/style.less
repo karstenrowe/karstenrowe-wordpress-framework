@@ -126,7 +126,7 @@ body {
 // navigation: primary
 .navbar {
 	.navbar-inner {
-		min-height: 40px;
+		min-height: 44px;
 		padding: 0;
 	}
 	.container {
@@ -150,8 +150,11 @@ body {
 				font-weight: 700;
 				text-shadow: 0 1px 1px white;
 				color: @grey;
+				border-bottom: 1px solid transparent;
+				border-radius: 0;
 				&:hover {
 					color: @brand;
+					background: none !important;
 					border-bottom: 1px solid @brand;
 				}
 			}
@@ -166,18 +169,38 @@ body {
 	// fixed nav
 	&.navbar-fixed-top {
 		position: fixed;
-		margin-bottom: 0 !important;
+		margin: 0;
+	}
+	// mobile nav
+	.btn-navbar {
+		background: @grey-dk;
+		border: none;
+		float: left;
+		margin-top: 8px;
+		margin-left: 8px;
+		&:hover {
+			background: @brand-dk;
+			border: none;
+		}
+		.icon-bar {
+			box-shadow: none;
+		}
+	}
+	.nav-collapse .nav>li>a {
+		padding: 12px 15px;
 	}
 }
 
 // hero
 .hero-unit {
+	line-height: 25px;
 	background: @off-white;
 	padding: 20px 0;
 
 	h1 {
-		color: @grey-dk;
+		line-height: 74px;
 		letter-spacing: 0;
+		color: @grey-dk;
 		margin: 12px 0;
 		span {
 			color: @brand-dk;
@@ -212,7 +235,6 @@ body {
 	line-height: 20px;
 	h3 {
 		font-size: 20px;
-		font-family: @body-font;
 		line-height: 30px;
 		color: @grey-dk;
 		margin: 11px 0 8px 0;
